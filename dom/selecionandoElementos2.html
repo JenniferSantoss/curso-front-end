@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #02</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo"><span wb-attrib>.terceiro .ultimo</span></div>
+    <script>              
+        
+        document.querySelector('#primeiro').classList.add('destaque')
+
+        const Selecionar = seletor =>
+            document.querySelectorAll(seletor).forEach(e => e.classList.add('destaque'))
+
+        const deselecionar = seletor =>
+            document.querySelectorAll(seletor).forEach(e => e.classList.remove('destaque'))    
+
+        Selecionar('div')
+        deselecionar('*')
+
+        Selecionar(':not(#primeiro)')
+        deselecionar('*')
+
+        Selecionar(':nth-child(1)')
+        deselecionar('*')
+
+        Selecionar('div:nth-of-type(1)')
+        deselecionar('*')
+
+        selecionar('[wb-attrib]')
+
+    </script>
+</body>
+</html>
+
+<!--O query selector espera um seletor css, passado atraves do #
+O querySelectorAll não retorna um html colections, como no exemplo passado, ele retorna
+um NodeList. O nodeList tem o forEach, por nesse caso não precisei
+transformar em array, mas se eu quisesse outras funçoes que não estao dentro
+do nodeList seria necessário transformar em array como no exemplo passado.
+
+-->

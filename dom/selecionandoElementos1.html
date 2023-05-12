@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #01</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo">.terceiro .ultimo</div>
+    <script>              
+        
+        document.getElementById('primeiro').classList.add('destaque')
+
+        const divs = document.getElementsByTagName('div')
+        Array.from(divs).forEach(e => e.classList.remove('destaque'))
+
+        const divsArray = [...divs]
+        divsArray.forEach(e => e.classList.remove('destaque'))
+
+        const ultimosElementos = document.getElementsByClassName('ultimo')
+        for(let e of ultimosElementos) {
+            e.classList.remove('destaque')
+        }
+
+        /* as funçoes getElementos... retorna um HTML colections e para transformar isso em array eu posso usar:
+        Array.from, ou o opreador sprad [... divs] e mesmo que você não transforme para array,
+        vc pode usar o for para integrar os elementos.
+        */
+
+    </script>
+</body>
+</html>
