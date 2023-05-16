@@ -21,6 +21,7 @@ function Barreira(reversa = false){
 //document.querySelector('[wm-flappy]').appendChild(b.elemento)
 
 function ParDeBarreiras (altura, abertura, x){
+    debugger;
     this.elemento = novoElemento('div', 'par-de-barreiras')
 
     this.superior = new Barreira(true)
@@ -35,14 +36,15 @@ function ParDeBarreiras (altura, abertura, x){
         const alturaInferior = altura - abertura - alturaSuperior
         this.superior.setAltura(alturaSuperior)
         this.inferior.setAltura(alturaInferior)
+        debugger;
     }
-
-    this.getX = () => parseInt(this.elemento.style.left.slipt('px')[0])
+            
+    this.getX = () => parseInt(this.elemento.style.left.split('px')[0])
     this.setX = x => this.elemento.style.left = `${x}px`
     this.getLargura = () => this.elemento.clientWidth
 
     this.sortearAbertura()
-    this.setX(x)
+    //this.setX(x)
 
 }
 
@@ -52,9 +54,9 @@ function ParDeBarreiras (altura, abertura, x){
 function Barreiras (altura, largura, abertura, espaco, notificarPonto){
     this.pares = [
         new ParDeBarreiras(altura, abertura, largura),
-        new ParDeBarreiras(altura, abertura, largura + espaço),
-        new ParDeBarreiras(altura, abertura, largura + espaço * 2),
-        new ParDeBarreiras(altura, abertura, largura + espaço * 3)
+        new ParDeBarreiras(altura, abertura, largura + espaco),
+        new ParDeBarreiras(altura, abertura, largura + espaco * 2),
+        new ParDeBarreiras(altura, abertura, largura + espaco * 3)
     ]
 
     const deslocamento = 3
@@ -83,7 +85,7 @@ function Passaro(alturaJogo){
     this.elemento = novoElemento('img', 'passaro')
     this.elemento.src = 'imgs/passaro.png'
 
-    this.getY = () => parseInt(this.elemento.style.bottom.slipt('px')[0])
+    this.getY = () => parseInt(this.elemento.style.bottom.split('px')[0])
     this.setY = y => this.elemento.style.bottom = `${y}px`
 
     window.onkeydown = e => voando = true
@@ -160,8 +162,7 @@ function FlappyBird(){
     const largura = areaDoJogo.clientWidth
 
     const progresso = new Progresso()
-    const barreiras = new Barreiras(altura, largura, 200, 400,
-        () => progresso.atualizarPontos(++pontos))
+    const barreiras = new Barreiras(altura, largura, 200, 400, () => progresso.atualizarPontos(++pontos))
 
     const passaro = new Passaro(altura)
 
